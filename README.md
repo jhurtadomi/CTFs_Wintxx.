@@ -16,7 +16,7 @@ Hola, soy **Wintx**, estudiante de **Ingeniería Informática**, apasionado por 
 ## 🤝 Feedback y Contacto  
 Si tienes sugerencias, críticas o quieres compartir ideas sobre **pentesting y ciberseguridad**, estaré encantado de recibir comentarios.  
 
-🔹 **LinkedIn:** [https://www.linkedin.com/in/jean-hurtado-8741a42a5/]  
-🔹 **GitHub:** [https://github.com/Jean25-sys]  
+🔹 **LinkedIn:** [Mi perfil](https://www.linkedin.com/in/jean-hurtado-8741a42a5/)  
+🔹 **GitHub:** [Mi repositorio](https://github.com/Jean25-sys)  
 
 📌 *¡Gracias por pasarte por aquí! Mantente atento a nuevos write-ups y comparte el conocimiento. 🚀🔥*  
