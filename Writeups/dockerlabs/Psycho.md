@@ -14,7 +14,7 @@ bash auto_deploy.sh psycho.tar
 ```
 ![despliegue](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/dockerlabs/images/psycho/despliegue.png)
 
-## RECONOCIENTO
+## RECONOCIMIENTO
 ```python
 nmap -p- -sS --min-rate 5000 -vvvv -n -Pn -sCV 172.17.0.2 -oN ports
 ```
