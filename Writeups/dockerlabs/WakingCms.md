@@ -190,7 +190,11 @@ Como tenemos `/usr/bin/env` con permisos SUID, visitamos [GFTObins](https://gtfo
 ```
 ![root](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/dockerlabs/images/WalkingCms/root.png)
 
+# ELIMINAR LA MAQUINA
 
+```ruby
+ctrl + c
+```
 
 
 
