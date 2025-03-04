@@ -43,7 +43,7 @@ Read data files from: /usr/bin/../share/nmap
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Sat Mar  1 20:15:04 2025 -- 1 IP address (1 host up) scanned in 8.82 seconds
 ```
-## EXPLOTACION
+## ENUMERACION
 ![weberro](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/dockerlabs/images/psycho/PAGINA%20ERROR.png)
 
 Podemos fijarnos que hay un mensaje en la parte izquiera final de la web, indicando un error, como si una solicitud se estuviera tramitando mal
@@ -63,7 +63,7 @@ index.php nos dirige a la misma web, entonces vamos a aplicar un Fuzzing para ve
 wfuzz -c --hc=404,500 --hw=169 -t 200 -w /usr/share/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -u 'http://172.17.0.2/index.php?FUZZ=whoami'
 ```
 ![Wfuzz](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/dockerlabs/images/psycho/wfuzz.png)
-
+## EXPLOTACION
 Como vemos tenemos un parámetro secret incluido en el index.php, vamos a la URL modificamos y tratamos de leer el `/etc/passwd` y bingo
 tenemos 2 Usuarios que son: vaxei y luisillo 
 
