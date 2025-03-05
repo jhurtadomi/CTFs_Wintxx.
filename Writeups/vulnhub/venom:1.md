@@ -117,6 +117,7 @@ hashcat -m 0 hash.txt /usr/share/wordlists/rockyou.txt --force
 ```
 ![hashcat_cracking](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/venom1/hashcat_craking.png)
 
+# ENUMERACION
 Nos da de resultado `hostinger`, pareces ser contraseña, tenemos que enumerar un poco mas como los servicios SMB por ejemplo para ver si encontramos usuarios 
 para esto podemos usar una herramienta llamada `enum4linux`
 ```ruby
