@@ -46,7 +46,7 @@ whatweb 192.168.195.133
 ```
 ![whatweb](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/vulnhub/images/casinoroyale%3A1/whatweb.png)
 
-ENUMERACION DE DIRECTORIOS POTENCIALES VULNERABLES
+# ENUMERACION
 ```ruby
 nmap --script http-enum -p80,8081 192.168.195.133
 ```
