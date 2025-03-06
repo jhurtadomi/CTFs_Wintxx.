@@ -105,7 +105,7 @@ find / -perm -4000 2>/dev/null
 ```
 ![binario_env](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/dockerlabs/images/reflection/binario_env.png)
 
-Para esta escalada podemos usar la pagina de ![GTFOBins](https://gtfobins.github.io/gtfobins/env/#sudo)
+Para esta escalada podemos usar la pagina de [GTFOBins](https://gtfobins.github.io/gtfobins/env/#sudo)
 ![gtfobins](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/dockerlabs/images/reflection/gtfobins.png)
 
 ![root](https://github.com/Jean25-sys/CTFs_Wintx/blob/main/Writeups/dockerlabs/images/reflection/rootpng.png)
