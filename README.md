@@ -1,7 +1,7 @@
-# 🚀 CTFs_Wintx – Write-ups de Máquinas CTFs 🔥
+# 🚀 CTFs_Wintxx – Write-ups de Máquinas CTFs 🔥
 
 ## 👨‍💻 Whoami  
-Hola, soy **Wintx**, estudiante de **Ingeniería Informática**, apasionado por la **ciberseguridad, el pentesting y el desarrollo de CTFs**. Me dedico a mejorar mis habilidades en seguridad ofensiva resolviendo desafíos en diversas plataformas y documentando mi proceso de aprendizaje.  
+Hola, soy **Wintxx**, estudiante de **Ingeniería Informática**, apasionado por la **ciberseguridad, el pentesting y el desarrollo de CTFs**. Me dedico a mejorar mis habilidades en seguridad ofensiva resolviendo desafíos en diversas plataformas y documentando mi proceso de aprendizaje.  
 
 ## 🛠 ¿Qué encontrarás en este repositorio?  
 📌 **Write-ups de máquinas CTFs y vulnerables** en plataformas como DockerLabs, VulnHub y otras.  
