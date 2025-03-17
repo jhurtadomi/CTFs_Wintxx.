@@ -2,14 +2,14 @@
 
 ## INFORMACIÓN GENERAL
 
--**Plataforma**: DockerLabs
--**Sistema Operativo**: Linux
--**Dificultad**: Fácil
+- **Plataforma**: DockerLabs
+- **Sistema Operativo**: Linux
+- **Dificultad**: Fácil
 
 ![machine_dockerlabs](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/dockerlabs/images/findyourstyle/machine_dockerlabs.png)
 
 
-## DESPLIGUE
+## DESPLIEGUE
 ```python
 bash autodeploy.sh findyourstyle.tar
 ```
@@ -65,7 +65,7 @@ un Drupal 8*, lo cual es intersante porque podemos buscar exploits activos en es
 Pero primero vamos a echar un ojo a la Web
 ![web](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/dockerlabs/images/findyourstyle/web.png)
 
-## EXPLOTACION
+## EXPLOTACIÓN
 ## DESCARGANDO SCRIPT DE SEARCHSPLOIT
 Si revisamos los directorios, probamos algunas técnicas en lo que podemos ver no tendremos éxito, lo único que hice fue buscar *exploits* con *searchsploit* para esa version de *Drupal*
 ```ruby
@@ -163,7 +163,7 @@ export TERM=xterm
 export SHELL=bash
 ```
 
-## Escalada de privilegios
+## ESCALADA DE PRIVILEGIOS
 Vamos a empezar viendo el `/etc/passwd` para ver si tenemos mas usuarios, y logramos ver que existe un usuario mas de nombre ballenita
 ![user_ballenita](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/dockerlabs/images/findyourstyle/user_ballenita.png)
 
