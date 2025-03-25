@@ -4,12 +4,12 @@
 
 ## DIFICULTAD: Easy
 
-![chemistry_htb](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry_htb.png)
+![chemistry_htb](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/chemistry_htb.png)
 **IP ATTACK -> 10.10.11.38**
 
 ## RECONOCIMIENTO
 Vamos a empezar tranquilo haciendo un ping a la maquina y tenemos conexión, de todas maneras el TTL(time to live) nos informa que es una maquina Linux
-![ping](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/ping.png)
+![ping](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/ping.png)
 
 Procedemos con un escaneo de puertos abiertos con `nmap`
 
@@ -72,7 +72,7 @@ nmap -p- -sS --min-rate 5000 -vvv -n -Pn -sCV 10.10.11.38
 
 De momento no hay nada que nos llame la atencion, solo una pagina web que alberga el puerto 5000, podemos echar un ojo a ver que tenemos 
 
-![web_5000](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/web_5000.png)
+![web_5000](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/web_5000.png)
 
 OK, entonces la web nos dice que:
 
@@ -82,12 +82,12 @@ OK, entonces la web nos dice que:
 
 Entonces nos da una pista que podemos subir un archivo CIF, si queremos descubrir algunos directorios ocultos con `Gobuster` no vamos a poder, entonces vamos a probar registrarse a ver que tenemos
 
-![registrado_web](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/registrado_web.png)
+![registrado_web](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/registrado_web.png)
 
 Podemos observar que, tenemos una Dashboard de subida del archivo CIF, si probamos con otras extensiones no tendremos éxito, y la pagina menciona que nos provee un archivo CIF para analizarlo, vamos a ver que tenemos, o de que manera se estructura
-![example_cif](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/example_cif.png)
+![example_cif](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/example_cif.png)
 
-![estructura_example](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/estructura_example.png)
+![estructura_example](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/estructura_example.png)
 
 ## EXPLOTACIÓN
 
@@ -146,14 +146,14 @@ Nos ponemos en modo Listening en nuestra maquina Atacante Local con `NetCat`
 nc -nlvp 1234
 ```
 
-![pwned_cif](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/pwned_cif.png)
+![pwned_cif](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/chemistry/pwned_cif.png)
 
 Una vez subido el archivo le damos en `view`, que es la opcion donde hace la ejecución y veremos que se nos queda cargando la pagina
 
-![cargando_page](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/cargando_page.png)
+![cargando_page](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/cargando_page.png)
 
 Nos fijamos si recibio la solicitud `NetCat`
-![reverse_shell](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/reverse_sje%C3%B1%C3%B1.png)
+![reverse_shell](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/reverse_sje%C3%B1%C3%B1.png)
 
 Y vemos que hemos obtenido una reverse shell, para hacer mas interactiva vamos a realizar el tratamiento de la TTY:
 
@@ -168,11 +168,11 @@ export SHELL=bash
 
 De primera nos encontamos a app.py, que echandole un ojo nos informa lo siguiente:
 
-![sqlite](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/sqlite.png)
+![sqlite](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/sqlite.png)
 La base de datos que se esta utilizando es una `sqlite`.
 
 Si seguimos revisando especificamente en el directorio `instance`, podemos ver 2 archivos interesantes, que es `database.db` que es una base de datos, el cual podemos abrir con `sqlite3`, tambien observamos `dump.txt` que contiene lo siguiente:
-![dump](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/dump.png)
+![dump](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/dump.png)
 
 Podemos observar la creación de 2 tablas de nombres `estructure` y `user`, en la tabla `user` se ingresaron usuarios con las contraseñas respectivamente hasheadas, podemos crackearlas, pero primero haremos un filtrado:
 
@@ -218,7 +218,7 @@ ee11cbb19052e40b07aac0ca060c23ee
 ahora si podemos ir a [CrackStation](https://crackstation.net/)
 tenemos la password `unicorniosrosados`, que de cierta manera nos hace pensar que es la password del user `rosa`, podemos migrar de usuario y entrar a su carpeta de usuario para encontrarnos con la primera flag
 ## PRIMERA FLAG
-![flag.txt](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/flag.txt.png)
+![flag.txt](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/flag.txt.png)
 
 ## ESCALADA DE PRIVILEGIOS 
 
@@ -228,11 +228,11 @@ Pero, si listamos procesos con
 ps -faux
 ```
 encontramos lo siguiente:
-![faux](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/faux.png) 
+![faux](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/faux.png) 
 
 Al parecer el usuario root esta ejecurando un `app.py` con `python3.9`, parece ser un sitio web, lo podemos comprobar listando puertos abiertos para ver si hay alguno 
 
-![ports_rosa](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/portts_rosa.png)
+![ports_rosa](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/portts_rosa.png)
 
 Vemos que hay un puerto `8080`, y el otro `5000` es el que ya hemos pasado, para averiguar un poco, como no esta corriendo en local, podemos lanzar un 
 ```bash
@@ -244,11 +244,11 @@ curl localhost:8080 -I
 ```
 Para ver las cabeceras de respuesta y aqui se viene lo interesante:
 
-![cabecera](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/cabecera.png)
+![cabecera](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/cabecera.png)
 
 Tenemos un servidor: `Python/3.9 aiohttp/3.9.1`, investigando vulnerabilidades sobre este servidor en internet nos encontramos con lo siguiente. una vulnerabilidad de LFI o Path Traversal, que se ejecuta mediante solicitud Get hacia un directorio existente:
 
-![analiss_payload](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/analisis_payload.png)
+![analiss_payload](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/analisis_payload.png)
 
 - **Este código construye un payload con 15 instancias de Path Traversal `/..`, significa que navegará hacia atras en el sistema 15 niveles**
 - **El payload comienza con el valor de `dir` que es el directorio existente de la web ingresado por el usuario y para cada intento se agrega el `/..`**
@@ -263,18 +263,18 @@ curl -s -X GET "http://localhost:8080/assets/../../../../../../../../../../../et
 ```
 - **path-as-is** : esto se encarga de que el Path Traversal `../` lo contemple de manera correcta
 
-![root_curl](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/root_curl.png)
+![root_curl](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/root_curl.png)
 
 Una vez esto, podemos dirigirnos al directorio de root y averiguar si existe una clave privada para logearnos por ssh
 
-![id_rsa_root](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/id_rsa_root.png)
+![id_rsa_root](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/id_rsa_root.png)
 
 efectivamente, lo tenemos, copiamos esta clave y le damos permisos `chmod 600 id_rsa` solo de propietario
 ```ruby
 ssh -i id_rsa root@localhost
 ```
 ### SEGUNDA FLAG
-![acceso_total](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/acceso_total.png)
+![acceso_total](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/acceso_total.png)
 
 ## HEMOS RESUELTO LA MAQUINA
 
