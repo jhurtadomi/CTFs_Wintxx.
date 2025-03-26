@@ -42,7 +42,7 @@ Agregamos el dominio `strutted.htb` al `/etc/hosts`
 
 ![/etc/hots](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/etchost.png)
 
-*Si accedemos a la web podemos encontrar lo siguiente, un FIle Upload, si pulsamos en download nos descarga un comprimido .zip, podemos ver un preview*
+Si accedemos a la web podemos encontrar lo siguiente, un FIle Upload, si pulsamos en download nos descarga un comprimido .zip, podemos ver un preview
 ![web](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/web.png)
 
 ```ruby
@@ -54,7 +54,7 @@ Observamos cosas como un `Dockerfile`
 ![docker_file](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/dockerfile.png)
 ![tomcat-users.xml](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/tomcat_users.png)
 
-*Algo muy interesante es encontrarnos con un tomcat-user.xml, porque justamente en este archivo se definen los usuarios y sus roles en TOMCAT, podemos revisar las siguiente rutas:
+Algo muy interesante es encontrarnos con un tomcat-user.xml, porque justamente en este archivo se definen los usuarios y sus roles en TOMCAT, podemos revisar las siguiente rutas:
 - `/manager/html` → consola de administración
 - `/host-manager/html` → consola de gestión de hosts virtuales
 
@@ -66,7 +66,7 @@ Observamos cosas como un `Dockerfile`
 
 Son unas credenciales `admin:skqKY6360z!Y`, vamos a ver si mas adelante le sacamos provecho
 
-*Si seguimos viendo o revisando los archivos encontramos algo que nos llama la atención en el archivo `pom.xml`, nos proporciona lo siguiente:*
+Si seguimos viendo o revisando los archivos encontramos algo que nos llama la atención en el archivo `pom.xml`, nos proporciona lo siguiente:*
 ![pomxml](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/pom_xml.png)
 *Encontramos versiones asi mismo de la que se esta utilizando en `Apache Struts`
 
@@ -77,21 +77,21 @@ Al saber esto podemos buscar si es que se encuentra alguna vulnerabilidad con re
 
 ![cve](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/cve.png)
 
-*Podemos ver que encontramos un CVE-2024-53677, muy reciente por cierto, que dice que: `Podemos manipular los parámetros del archivo a cargar y hacer una ejecucion remota de código, aplica para las versiones desde la 2.0.0 - 6.4.0
+Podemos ver que encontramos un CVE-2024-53677, muy reciente por cierto, que dice que: `Podemos manipular los parámetros del archivo a cargar y hacer una ejecucion remota de código, aplica para las versiones desde la 2.0.0 - 6.4.0
 
-También revisando el `Dockerfile` al parecer se esta utilizando java como lenguaje*
+También revisando el `Dockerfile` al parecer se esta utilizando java como lenguaje
 
 ![dockerfile_content](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/dockerfile_content.png)
 
 
-*Revisando algunos PoC, Códigos en Git, al parecer efectivamente podemos poder cargar un archivo con extensión `.jsp`
+Revisando algunos PoC, Códigos en Git, al parecer efectivamente podemos poder cargar un archivo con extensión `.jsp`
 ![PoC_Github](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/PoC%20Github.png)
 
 *Podemos echar un ojo con CAIDO, que por cierto sospechamos de una subida de un archivo con formato `JPS`, como nos reporto el `/manager/html` de Tomcat
 
 ![caido_1](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/caido_1.png)
 
-*Revisando un poco con CAIDO, podemos observar que solo se nos interpreta la ruta si subimos archivos con las extensiones que nos proporciona en la web, NUESTRA INTENCION ES TRATAR DE SUBIR UN `.jsp` PERO NO TENEMOS ÉXITO*
+Revisando un poco con CAIDO, podemos observar que solo se nos interpreta la ruta si subimos archivos con las extensiones que nos proporciona en la web, NUESTRA INTENCION ES TRATAR DE SUBIR UN `.jsp` PERO NO TENEMOS ÉXITO
 
 ![caido_2](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/strutted/caido_2.png)
 
