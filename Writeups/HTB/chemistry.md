@@ -146,7 +146,7 @@ Nos ponemos en modo Listening en nuestra maquina Atacante Local con `NetCat`
 nc -nlvp 1234
 ```
 
-![pwned_cif](https://github.com/Jean25-sys/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/chemistry/pwned_cif.png)
+![pwned_cif](https://github.com/jhurtadomi/CTFs_Wintxx./blob/main/Writeups/HTB/images/chemistry/pwned_cif.png)
 
 Una vez subido el archivo le damos en `view`, que es la opcion donde hace la ejecución y veremos que se nos queda cargando la pagina
 
